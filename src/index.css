@@ -180,3 +180,22 @@ button.hud-frame.bg-cyan-400 {
   backdrop-filter: blur(14px);
   mask-image: linear-gradient(to bottom, transparent 0%, #000 58%, #000 100%);
 }
+
+@keyframes scroll-hint {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(7px);
+    opacity: 1;
+  }
+}
+
+.scroll-arrow {
+  display: inline-block;
+  font-size: 1.1rem;
+  line-height: 1;
+  animation: scroll-hint 1.7s ease-in-out infinite;
+}

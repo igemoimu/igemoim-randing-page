@@ -35,10 +35,6 @@ const tracks = [
   },
 ]
 
-function Corner({ className }: { className: string }) {
-  return <span className={`pointer-events-none absolute h-5 w-5 border-cyan-300/80 ${className}`} />
-}
-
 function App() {
   return (
     <div className="relative min-h-svh overflow-x-hidden bg-[#05060a] text-[#eef6ff]">
@@ -90,53 +86,25 @@ function App() {
             className="block h-auto w-full"
           />
           <div className="banner-edge" aria-hidden />
-        </section>
-
-        <section className="relative -mt-10 border-b border-cyan-300/15 pb-16 pt-4 md:-mt-16 md:pb-20 md:pt-6">
-          <div className="mx-auto max-w-6xl px-5">
-            <div className="relative max-w-xl neon-border hud-frame bg-[#0a0d14] p-6 md:p-8">
-              <Corner className="top-0 left-0 border-t-2 border-l-2" />
-              <Corner className="top-0 right-0 border-t-2 border-r-2" />
-              <Corner className="bottom-0 left-0 border-b-2 border-l-2" />
-              <Corner className="right-0 bottom-0 border-r-2 border-b-2" />
-
-              <p className="font-tech text-[11px] tracking-[0.32em] text-cyan-300">
-                KMU GAME DEV CLUB // SOFTWARE
-              </p>
-              <h1 className="font-display neon-text mt-3 text-5xl leading-none md:text-7xl">
-                이게모임
-              </h1>
-              <p className="font-tech mt-3 text-sm tracking-[0.18em] text-white/80 md:text-base">
-                PLAY CREATE TOGETHER
-              </p>
-              <p className="mt-5 max-w-md text-sm leading-7 text-white/75 md:text-[15px]">
-                국민대학교 소프트웨어학부 게임개발 동아리.
-                <br />
-                같이 기획하고, 만들고, 끝내 세상에 내보낸다.
-              </p>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <a
-                  href="#join"
-                  className="font-tech hud-frame bg-cyan-400 px-5 py-3 text-[12px] tracking-[0.16em] text-black transition hover:bg-white"
-                >
-                  지금 합류하기
-                </a>
-                <a
-                  href="#about"
-                  className="font-tech hud-frame border border-cyan-300/40 px-5 py-3 text-[12px] tracking-[0.16em] text-cyan-100 transition hover:border-cyan-200 hover:text-white"
-                >
-                  동아리 보기
-                </a>
-              </div>
-            </div>
-
-            <div className="font-tech mt-8 flex flex-wrap items-center gap-4 text-[10px] tracking-[0.28em] text-white/45">
-              <span>KOOKMIN UNIV.</span>
-              <span className="h-px w-8 bg-cyan-300/40" />
-              <span>NEW ERIDU TONE</span>
-              <span className="h-px w-8 bg-cyan-300/40" />
-              <span>2026 SEASON</span>
-            </div>
+          <div className="relative z-10 mx-auto max-w-2xl px-5 pb-16 pt-10 text-center md:pb-20 md:pt-14">
+            <h1 className="sr-only">이게모임</h1>
+            <p className="font-tech text-sm tracking-[0.22em] text-white/80 md:text-base">
+              PLAY CREATE TOGETHER
+            </p>
+            <p className="mx-auto mt-5 max-w-md text-[15px] leading-7 text-white/75">
+              국민대학교 소프트웨어학부 게임개발 동아리.
+              <br />
+              같이 기획하고, 만들고, 끝내 세상에 내보낸다.
+            </p>
+            <a
+              href="#about"
+              className="mt-8 inline-flex flex-col items-center gap-1 text-[14px] font-semibold tracking-wide text-cyan-100/85 transition hover:text-white"
+            >
+              스크롤 하여 보기
+              <span className="scroll-arrow text-cyan-300" aria-hidden>
+                ↓
+              </span>
+            </a>
           </div>
         </section>
 
