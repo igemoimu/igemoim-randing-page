@@ -45,7 +45,7 @@ function App() {
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
           <a href="#top" className="flex items-center gap-3">
             <img
-              src="/logo.jpg"
+              src="/logo.png"
               alt="이게모임 로고"
               className="h-10 w-10 object-cover neon-border"
             />
