@@ -42,19 +42,13 @@ function App() {
       <div className="pointer-events-none fixed inset-0 scanlines" />
 
       <header className="sticky top-0 z-40 border-b border-cyan-300/15 bg-[#05060a]/90 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-          <a href="#top" className="flex items-center gap-3">
+        <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-5">
+          <a href="#top" className="flex items-center">
             <img
               src="/logo.png"
-              alt="이게모임 로고"
-              className="h-10 w-10 object-cover neon-border"
+              alt="이게모임"
+              className="h-14 w-auto max-w-[240px] object-contain object-left"
             />
-            <div className="leading-none">
-              <p className="font-display text-xl tracking-tight">이게모임</p>
-              <p className="font-tech mt-1 text-[10px] tracking-[0.28em] text-cyan-300">
-                KMU GAME DEV
-              </p>
-            </div>
           </a>
           <nav className="hidden items-center gap-7 md:flex">
             {nav.map((item) => (
@@ -174,9 +168,13 @@ function App() {
 
             <div className="relative">
               <div className="absolute -inset-3 bg-cyan-400/10 blur-2xl" />
-              <figure className="relative overflow-hidden neon-border hud-frame">
-                <img src="/logo.jpg" alt="이게모임 로고와 마스코트" className="w-full" />
-                <figcaption className="font-tech absolute right-3 bottom-3 bg-black/70 px-3 py-1 text-[10px] tracking-[0.22em] text-cyan-200">
+              <figure className="relative">
+                <img
+                  src="/logo.png"
+                  alt="이게모임 로고와 마스코트"
+                  className="relative w-full"
+                />
+                <figcaption className="font-tech mt-3 text-right text-[10px] tracking-[0.22em] text-cyan-200/80">
                   MASCOT // UNIT-00
                 </figcaption>
               </figure>
