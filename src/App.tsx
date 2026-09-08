@@ -66,7 +66,7 @@ function App() {
             ))}
             <a
               href="#join"
-              className="font-tech hud-frame bg-cyan-400 px-4 py-2 text-[11px] tracking-[0.18em] text-black transition hover:bg-white"
+              className="btn-breathe font-tech hud-frame bg-cyan-400 px-4 py-2 text-[11px] tracking-[0.18em] text-black transition hover:bg-white"
             >
               JOIN US
             </a>
@@ -162,7 +162,7 @@ function App() {
                   ['CAMPUS', 'KOOKMIN'],
                   ['MODE', 'CO-OP'],
                 ].map(([k, v]) => (
-                  <div key={k} className="hud-frame border border-cyan-300/20 bg-white/3 px-3 py-3">
+                  <div key={k} className="border border-cyan-300/20 bg-white/3 px-3 py-3">
                     <p className="font-tech text-[10px] tracking-[0.2em] text-cyan-300">{k}</p>
                     <p className="mt-1 text-sm font-bold">{v}</p>
                   </div>
@@ -196,7 +196,7 @@ function App() {
               {tracks.map((track) => (
                 <article
                   key={track.code}
-                  className="hud-frame group border border-cyan-300/15 bg-[#0a0d14] p-6 transition hover:border-cyan-300/50 hover:bg-[#0d1520]"
+                  className="border border-cyan-300/15 bg-[#0a0d14] p-6"
                 >
                   <div className="flex items-start justify-between">
                     <p className="font-tech text-xs tracking-[0.24em] text-cyan-300">
@@ -214,7 +214,7 @@ function App() {
 
         <section id="join" className="relative border-t border-cyan-300/15 py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-5">
-            <div className="relative overflow-hidden neon-border hud-frame">
+            <div className="relative overflow-hidden neon-border">
               <img
                 src="/banner.png"
                 alt=""
@@ -233,7 +233,7 @@ function App() {
                 <div className="mt-8 flex flex-wrap items-center gap-3">
                   <a
                     href={CONTACT_MAILTO}
-                    className="font-tech hud-frame bg-cyan-400 px-5 py-3 text-[12px] tracking-[0.16em] text-black transition hover:bg-white"
+                    className="btn-breathe hud-frame bg-cyan-400 px-5 py-3 text-[15px] font-semibold tracking-wide text-black transition hover:bg-white"
                   >
                     학기 초 모집 오픈
                   </a>
