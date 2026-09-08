@@ -1,7 +1,11 @@
+const CONTACT_EMAIL = 'igemoimu@gmail.com'
+const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`
+
 const nav = [
   { href: '#about', label: 'ABOUT' },
   { href: '#crew', label: 'CREW' },
   { href: '#join', label: 'JOIN' },
+  { href: CONTACT_MAILTO, label: 'CONTACT' },
 ]
 
 const tracks = [
@@ -227,12 +231,18 @@ function App() {
                   기획이든 코드든 그림이든, 손에 남는 걸 만들고 싶은 사람을 받는다.
                 </p>
                 <div className="mt-8 flex flex-wrap items-center gap-3">
-                  <span className="font-tech hud-frame bg-cyan-400 px-5 py-3 text-[12px] tracking-[0.16em] text-black">
+                  <a
+                    href={CONTACT_MAILTO}
+                    className="font-tech hud-frame bg-cyan-400 px-5 py-3 text-[12px] tracking-[0.16em] text-black transition hover:bg-white"
+                  >
                     학기 초 모집 오픈
-                  </span>
-                  <span className="font-tech text-[11px] tracking-[0.2em] text-white/50">
-                    PLAY CREATE TOGETHER
-                  </span>
+                  </a>
+                  <a
+                    href={CONTACT_MAILTO}
+                    className="font-tech text-[12px] tracking-[0.12em] text-cyan-200 underline-offset-4 transition hover:text-white hover:underline"
+                  >
+                    {CONTACT_EMAIL}
+                  </a>
                 </div>
               </div>
             </div>
@@ -245,7 +255,15 @@ function App() {
           <p className="font-tech tracking-[0.18em]">
             © {new Date().getFullYear()} IGEMOIM / KMU GAME DEV CLUB
           </p>
-          <p>국민대학교 소프트웨어학부 게임개발 동아리</p>
+          <div className="flex flex-col gap-2 md:items-end">
+            <a
+              href={CONTACT_MAILTO}
+              className="font-tech tracking-[0.08em] transition hover:text-cyan-300"
+            >
+              {CONTACT_EMAIL}
+            </a>
+            <p>국민대학교 소프트웨어학부 게임개발 동아리</p>
+          </div>
         </div>
       </footer>
     </div>
