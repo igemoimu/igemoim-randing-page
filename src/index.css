@@ -73,3 +73,26 @@ body {
 .neon-text {
   text-shadow: 0 0 18px rgb(0 212 255 / 0.45);
 }
+
+.banner-edge {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  height: 46%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgb(5 6 10 / 0) 0%,
+    rgb(5 6 10 / 0.28) 42%,
+    rgb(5 6 10 / 0.82) 74%,
+    #05060a 100%
+  );
+}
+
+.banner-edge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(14px);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 58%, #000 100%);
+}

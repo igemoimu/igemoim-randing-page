@@ -41,7 +41,7 @@ function App() {
       <div className="pointer-events-none fixed inset-0 grid-glow opacity-40" />
       <div className="pointer-events-none fixed inset-0 scanlines" />
 
-      <header className="fixed inset-x-0 top-0 z-40 border-b border-cyan-300/15 bg-[#05060a]/70 backdrop-blur-md">
+      <header className="sticky top-0 z-40 border-b border-cyan-300/15 bg-[#05060a]/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
           <a href="#top" className="flex items-center gap-3">
             <img
@@ -83,17 +83,20 @@ function App() {
       </header>
 
       <main id="top">
-        <section className="relative min-h-svh">
+        <section className="relative">
           <img
             src="/banner.png"
             alt="이게모임 시네마틱 배너"
-            className="absolute inset-0 h-full w-full object-cover object-[center_35%]"
+            width={1024}
+            height={328}
+            className="block h-auto w-full"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#05060a] via-[#05060a]/55 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#05060a] via-transparent to-[#05060a]/40" />
+          <div className="banner-edge" aria-hidden />
+        </section>
 
-          <div className="relative mx-auto flex min-h-svh max-w-6xl flex-col justify-end px-5 pb-16 pt-28 md:justify-center md:pb-0">
-            <div className="relative max-w-xl neon-border hud-frame bg-[#05060a]/55 p-6 backdrop-blur-sm md:p-8">
+        <section className="relative -mt-10 border-b border-cyan-300/15 pb-16 pt-4 md:-mt-16 md:pb-20 md:pt-6">
+          <div className="mx-auto max-w-6xl px-5">
+            <div className="relative max-w-xl neon-border hud-frame bg-[#0a0d14] p-6 md:p-8">
               <Corner className="top-0 left-0 border-t-2 border-l-2" />
               <Corner className="top-0 right-0 border-t-2 border-r-2" />
               <Corner className="bottom-0 left-0 border-b-2 border-l-2" />
