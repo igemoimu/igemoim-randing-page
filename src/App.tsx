@@ -78,15 +78,18 @@ function App() {
 
       <main id="top">
         <section className="relative">
-          <img
-            src="/banner.png"
-            alt="이게모임 시네마틱 배너"
-            width={1024}
-            height={328}
-            className="block h-auto w-full"
-          />
+          <div className="banner-art">
+            <img
+              src="/banner.png"
+              alt="이게모임 시네마틱 배너"
+              width={1024}
+              height={328}
+              className="block h-auto w-full"
+            />
+          </div>
           <div className="banner-edge" aria-hidden />
           <div className="relative z-10 mx-auto max-w-2xl px-5 pb-16 pt-10 text-center md:pb-20 md:pt-14">
+            <div className="banner-hud mx-auto mb-7" aria-hidden />
             <h1 className="sr-only">이게모임</h1>
             <p className="font-tech text-sm tracking-[0.22em] text-white/80 md:text-base">
               PLAY CREATE TOGETHER

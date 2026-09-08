@@ -158,27 +158,102 @@ button.hud-frame.bg-cyan-400 {
   text-shadow: 0 0 18px rgb(0 212 255 / 0.45);
 }
 
+.banner-art img {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 38%,
+    rgb(0 0 0 / 0.88) 58%,
+    rgb(0 0 0 / 0.42) 78%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 38%,
+    rgb(0 0 0 / 0.88) 58%,
+    rgb(0 0 0 / 0.42) 78%,
+    transparent 100%
+  );
+}
+
 .banner-edge {
   position: absolute;
   inset-inline: 0;
-  bottom: -1px;
-  height: 46%;
+  bottom: -2px;
+  height: 62%;
   pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgb(5 6 10 / 0) 0%,
-    rgb(5 6 10 / 0.28) 42%,
-    rgb(5 6 10 / 0.82) 74%,
-    #05060a 100%
-  );
 }
 
 .banner-edge::before {
   content: '';
   position: absolute;
   inset: 0;
-  backdrop-filter: blur(14px);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 58%, #000 100%);
+  backdrop-filter: blur(22px) saturate(1.2);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 36%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 36%, #000 100%);
+}
+
+.banner-edge::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgb(5 6 10 / 0.12) 24%,
+      rgb(5 6 10 / 0.5) 52%,
+      rgb(5 6 10 / 0.88) 78%,
+      #05060a 100%
+    ),
+    linear-gradient(
+      to bottom,
+      transparent 68%,
+      rgb(0 212 255 / 0.16) 84%,
+      transparent 96%
+    );
+}
+
+.banner-hud {
+  position: relative;
+  width: min(22rem, 70%);
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(0 212 255 / 0.15) 18%,
+    rgb(0 212 255 / 0.9) 50%,
+    rgb(0 212 255 / 0.15) 82%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 10px rgb(0 212 255 / 0.55),
+    0 0 22px rgb(0 160 255 / 0.25);
+}
+
+.banner-hud::before,
+.banner-hud::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid rgb(0 212 255 / 0.8);
+  box-shadow: 0 0 8px rgb(0 212 255 / 0.45);
+}
+
+.banner-hud::before {
+  left: 12%;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.banner-hud::after {
+  right: 12%;
+  border-left: 0;
+  border-top: 0;
 }
 
 @keyframes scroll-hint {
