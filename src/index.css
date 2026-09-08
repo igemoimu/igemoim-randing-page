@@ -1,11 +1,75 @@
 @import 'tailwindcss';
 
+@font-face {
+  font-family: 'Pretendard Variable';
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/PretendardVariable.woff2') format('woff2-variations');
+}
+
+:root {
+  --bg: #05060a;
+  --ink: #eef6ff;
+  --muted: #8aa0b8;
+  --cyan: #00d4ff;
+  --blue: #1a8cff;
+}
+
 html,
 body,
 #root {
   min-height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
 body {
   margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: 'Black Han Sans', sans-serif;
+}
+
+.font-tech {
+  font-family: Orbitron, sans-serif;
+}
+
+.hud-frame {
+  clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
+}
+
+.scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgb(255 255 255 / 0.035) 0 1px,
+    transparent 1px 3px
+  );
+}
+
+.grid-glow {
+  background-image:
+    linear-gradient(rgb(0 212 255 / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(0 212 255 / 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.neon-border {
+  box-shadow:
+    0 0 0 1px rgb(0 212 255 / 0.35),
+    0 0 24px rgb(0 132 255 / 0.18);
+}
+
+.neon-text {
+  text-shadow: 0 0 18px rgb(0 212 255 / 0.45);
 }
