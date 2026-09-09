@@ -45,9 +45,9 @@ function App() {
         <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-5">
           <a href="#top" className="flex items-center">
             <img
-              src="/logo.png"
+              src="/icon.png"
               alt="이게모임"
-              className="h-14 w-auto max-w-[240px] object-contain object-left"
+              className="h-12 w-12 object-contain"
             />
           </a>
           <nav className="hidden items-center gap-7 md:flex">
@@ -145,7 +145,7 @@ function App() {
               <div className="absolute -inset-3 bg-cyan-400/10 blur-2xl" />
               <figure className="relative">
                 <img
-                  src="/logo.png"
+                  src="/logo.jpg"
                   alt="이게모임 로고와 마스코트"
                   className="relative w-full"
                 />
