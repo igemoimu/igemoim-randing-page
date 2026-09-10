@@ -158,6 +158,7 @@ function App() {
                   </h3>
                   <p className="mt-6 max-w-md text-[15px] leading-8 text-[#b7c8d8]">
                     국민대학교 소프트웨어학부의 게임 개발 동아리입니다.
+                    <br />
                     혼자 뚝딱하기보다, 같이 만들고 진짜로 플레이할 수 있는 걸
                     남기려고 합니다.
                   </p>
