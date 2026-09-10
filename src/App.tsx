@@ -157,7 +157,7 @@ function App() {
                     TOGETHER.
                   </h3>
                   <p className="mt-6 max-w-md text-[15px] leading-8 text-[#b7c8d8]">
-                    국민대학교 소프트웨어학부의 게임 개발 동아리입니다.
+                    국민대학교 소프트웨어융합대학의 게임 개발 동아리입니다.
                     <br />
                     혼자 뚝딱하기보다, 같이 만들고 진짜로 플레이할 수 있는 걸
                     남기려고 합니다.
@@ -246,7 +246,7 @@ function App() {
           <p className="font-tech tracking-[0.18em]">
             © {new Date().getFullYear()} IGEMOIM / KMU GAME DEV CLUB
           </p>
-          <p>국민대학교 소프트웨어학부 게임개발 동아리</p>
+          <p>국민대학교 소프트웨어융합대학 게임개발 동아리</p>
         </div>
       </footer>
     </div>
