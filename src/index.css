@@ -454,8 +454,96 @@ button.hud-frame.bg-cyan-400 {
   animation: enter-fade 0.22s ease both;
 }
 
+.modal-veil.is-leave {
+  animation: leave-fade 0.22s ease both;
+}
+
 .modal-panel {
   animation: pop-in 0.28s ease both;
+}
+
+.modal-panel.is-leave {
+  animation: pop-out 0.22s ease both;
+}
+
+@keyframes leave-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes pop-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+}
+
+@keyframes modal-view-in-forward {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes modal-view-out-forward {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-22px);
+  }
+}
+
+@keyframes modal-view-in-back {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes modal-view-out-back {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(22px);
+  }
+}
+
+.modal-view.is-in.dir-forward {
+  animation: modal-view-in-forward 0.3s ease both;
+}
+
+.modal-view.is-out.dir-forward {
+  animation: modal-view-out-forward 0.22s ease both;
+}
+
+.modal-view.is-in.dir-back {
+  animation: modal-view-in-back 0.3s ease both;
+}
+
+.modal-view.is-out.dir-back {
+  animation: modal-view-out-back 0.22s ease both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -464,7 +552,11 @@ button.hud-frame.bg-cyan-400 {
   .enter-up,
   .enter-fade,
   .modal-veil,
+  .modal-veil.is-leave,
   .modal-panel,
+  .modal-panel.is-leave,
+  .modal-view.is-in,
+  .modal-view.is-out,
   .scroll-arrow,
   .btn-breathe,
   .logo-aura {

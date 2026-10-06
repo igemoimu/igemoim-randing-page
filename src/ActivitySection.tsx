@@ -1,8 +1,7 @@
-import { useEffect, useId, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { ConferenceModal } from './ConferenceModal'
 import { Reveal } from './Reveal'
 import { SectionHeading } from './SectionHeading'
-
-const ACTIVITY_CLICKABLE = false
 
 const activities = [
   {
@@ -10,42 +9,36 @@ const activities = [
     code: '01',
     title: 'GAME JAM',
     when: 'OCT 30 — NOV 1',
+    open: false,
   },
   {
     id: 'conference',
     code: '02',
     title: 'CONFERENCE',
-    when: 'LAST WEDNESDAY',
+    when: 'EVERY LAST WEDNESDAY',
+    open: true,
   },
   {
     id: 'review',
     code: '03',
     title: 'REVIEW',
     when: 'EVERY WEDNESDAY',
+    open: false,
   },
 ] as const
 
-type ActivityId = (typeof activities)[number]['id']
-
 export function ActivitySection() {
-  const [openId, setOpenId] = useState<ActivityId | null>(null)
-  const titleId = useId()
-  const open = activities.find((item) => item.id === openId) ?? null
+  const [conferenceOpen, setConferenceOpen] = useState(false)
 
   useEffect(() => {
-    if (!open) return
+    if (!conferenceOpen) return
 
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setOpenId(null)
-    }
     const prev = document.body.style.overflow
     document.body.style.overflow = 'hidden'
-    window.addEventListener('keydown', onKeyDown)
     return () => {
       document.body.style.overflow = prev
-      window.removeEventListener('keydown', onKeyDown)
     }
-  }, [open])
+  }, [conferenceOpen])
 
   return (
     <section id="activity" className="relative border-t border-cyan-300/15 py-20 md:py-28">
@@ -57,63 +50,71 @@ export function ActivitySection() {
         <div className="mt-12 divide-y divide-cyan-300/15 border-y border-cyan-300/15">
           {activities.map((item, index) => (
             <Reveal key={item.id} delay={index * 80}>
-              <div className="flex flex-col gap-2 py-6 md:flex-row md:items-end md:justify-between md:py-7">
-                <div className="min-w-0">
-                  <p className="font-tech text-[10px] tracking-[0.28em] text-cyan-300">
-                    {item.code}
+              {item.open ? (
+                <button
+                  type="button"
+                  onClick={() => setConferenceOpen(true)}
+                  className="card-lift group flex w-full flex-col gap-2 py-6 text-left md:flex-row md:items-end md:justify-between md:py-7"
+                >
+                  <ActivityTitle item={item} />
+                  <div className="flex items-center gap-3">
+                    <p className="font-tech text-[10px] tracking-[0.2em] text-cyan-100/55 md:text-[11px]">
+                      {item.when}
+                    </p>
+                    <ArrowOut />
+                  </div>
+                </button>
+              ) : (
+                <div className="flex flex-col gap-2 py-6 md:flex-row md:items-end md:justify-between md:py-7">
+                  <ActivityTitle item={item} />
+                  <p className="font-tech text-[10px] tracking-[0.2em] text-cyan-100/55 md:text-[11px]">
+                    {item.when}
                   </p>
-                  <h3 className="font-display mt-2 text-[22px] leading-none text-white md:text-[28px]">
-                    {item.title}
-                  </h3>
                 </div>
-                <p className="font-tech text-[10px] tracking-[0.2em] text-cyan-100/55 md:text-[11px]">
-                  {item.when}
-                </p>
-              </div>
+              )}
             </Reveal>
           ))}
         </div>
       </div>
 
-      {ACTIVITY_CLICKABLE && open ? (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center px-5"
-          role="presentation"
-        >
-          <button
-            type="button"
-            aria-label="닫기"
-            className="modal-veil absolute inset-0 bg-[#05060a]/80 backdrop-blur-sm"
-            onClick={() => setOpenId(null)}
-          />
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby={titleId}
-            className="modal-panel relative z-10 w-full max-w-md border border-cyan-300/30 bg-[#0a0d14] p-8 shadow-[0_0_40px_rgb(0_212_255/0.12)]"
-          >
-            <p className="font-tech text-[11px] tracking-[0.24em] text-cyan-300">
-              {open.code}
-            </p>
-            <h3 id={titleId} className="font-tech mt-3 text-3xl tracking-[0.12em]">
-              {open.title}
-            </h3>
-            <p className="mt-2 font-tech text-sm tracking-[0.14em] text-cyan-100">
-              {open.when}
-            </p>
-            <p className="font-tech mt-8 text-center text-lg tracking-[0.18em] text-cyan-200">
-              COMING SOON
-            </p>
-            <button
-              type="button"
-              onClick={() => setOpenId(null)}
-              className="btn-breathe hud-frame mt-8 w-full bg-cyan-400 px-4 py-3 text-[14px] font-semibold tracking-wide text-black transition hover:bg-white"
-            >
-              닫기
-            </button>
-          </div>
-        </div>
+      {conferenceOpen ? (
+        <ConferenceModal onClose={() => setConferenceOpen(false)} />
       ) : null}
     </section>
+  )
+}
+
+function ArrowOut() {
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 12 12"
+      className="h-3 w-3 shrink-0 text-cyan-200/75 transition group-hover:text-cyan-100"
+    >
+      <path
+        d="M3.2 8.8 8.8 3.2M4.6 3.2H8.8V7.4"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.35"
+        strokeLinecap="square"
+      />
+    </svg>
+  )
+}
+
+function ActivityTitle({
+  item,
+}: {
+  item: (typeof activities)[number]
+}) {
+  return (
+    <div className="min-w-0">
+      <p className="font-tech text-[10px] tracking-[0.28em] text-cyan-300">
+        {item.code}
+      </p>
+      <h3 className="font-display mt-2 text-[22px] leading-none text-white transition group-hover:text-cyan-100 md:text-[28px]">
+        {item.title}
+      </h3>
+    </div>
   )
 }
