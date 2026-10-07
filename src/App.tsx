@@ -103,10 +103,10 @@ function App() {
         <section className="relative">
           <div className="banner-art enter-banner">
             <img
-              src="/banner.png"
+              src="/banner.jpg?v=2"
               alt="이게모임 시네마틱 배너"
               width={1024}
-              height={328}
+              height={341}
               className="block h-auto w-full"
             />
           </div>
@@ -209,7 +209,7 @@ function App() {
             <Reveal>
             <div className="relative overflow-hidden neon-border">
               <img
-                src="/banner.png"
+                src="/banner.jpg?v=2"
                 alt=""
                 className="absolute inset-0 h-full w-full object-cover opacity-30"
               />
