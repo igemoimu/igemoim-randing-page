@@ -8,7 +8,7 @@ const activities = [
     id: 'gamejam',
     code: '01',
     title: 'GAME JAM',
-    when: 'OCT 30 — NOV 1',
+    when: 'COMING SOON',
     open: false,
   },
   {
