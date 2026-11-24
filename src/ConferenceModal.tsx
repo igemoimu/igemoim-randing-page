@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { meetupNetworking, meetupTalks } from './conference'
 
-type ConferenceView = 'overview' | 'vol1'
+type ConferenceView = 'overview' | 'vol1' | 'vol2'
 
 type ConferenceModalProps = {
   onClose: () => void
@@ -40,7 +40,7 @@ export function ConferenceModal({ onClose }: ConferenceModalProps) {
     if (leaving || next === view || phase === 'out') return
     pendingView.current = next
     setMoved(true)
-    setDir(next === 'vol1' ? 'forward' : 'back')
+    setDir(next === 'overview' ? 'back' : 'forward')
     setPhase('out')
   }
 
@@ -69,7 +69,11 @@ export function ConferenceModal({ onClose }: ConferenceModalProps) {
         className={`modal-panel relative z-10 flex max-h-[min(88vh,900px)] w-full max-w-5xl flex-col overflow-hidden border border-cyan-300/30 bg-[#0a0d14] shadow-[0_0_40px_rgb(0_212_255/0.12)]${leaving ? ' is-leave' : ''}`}
       >
         <div className="flex items-center justify-between border-b border-cyan-300/15 px-5 py-4 md:px-7">
-          {view === 'vol1' ? (
+          {view === 'overview' ? (
+            <p className="font-tech text-[11px] tracking-[0.24em] text-cyan-300">
+              CONFERENCE
+            </p>
+          ) : (
             <button
               type="button"
               onClick={() => goTo('overview')}
@@ -77,10 +81,6 @@ export function ConferenceModal({ onClose }: ConferenceModalProps) {
             >
               ← 목록
             </button>
-          ) : (
-            <p className="font-tech text-[11px] tracking-[0.24em] text-cyan-300">
-              CONFERENCE
-            </p>
           )}
           <button
             type="button"
@@ -97,9 +97,15 @@ export function ConferenceModal({ onClose }: ConferenceModalProps) {
             onAnimationEnd={onViewAnimEnd}
           >
             {view === 'overview' ? (
-              <Overview titleId={titleId} onOpenVol1={() => goTo('vol1')} />
-            ) : (
+              <Overview
+                titleId={titleId}
+                onOpenVol1={() => goTo('vol1')}
+                onOpenVol2={() => goTo('vol2')}
+              />
+            ) : view === 'vol1' ? (
               <VolumeOne titleId={titleId} />
+            ) : (
+              <VolumeTwo titleId={titleId} />
             )}
           </div>
         </div>
@@ -111,16 +117,18 @@ export function ConferenceModal({ onClose }: ConferenceModalProps) {
 function Overview({
   titleId,
   onOpenVol1,
+  onOpenVol2,
 }: {
   titleId: string
   onOpenVol1: () => void
+  onOpenVol2: () => void
 }) {
   return (
     <div className="grid items-start gap-8 p-5 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)] md:gap-10 md:p-8">
       <figure className="border border-cyan-300/15 bg-[#070b12]">
         <img
-          src="/meetup-poster.png?v=2"
-          alt="이게모임 MEETUP 포스터"
+          src="/meetup-poster-vol2.jpg"
+          alt="제2회 이게모임 MEETUP 포스터"
           className="block h-auto w-full"
         />
       </figure>
@@ -140,9 +148,8 @@ function Overview({
           나누는 자립니다. 게임 개발에 관심 있으면 누구나 올 수 있어요.
         </p>
         <p className="mt-4 max-w-xl text-[15px] leading-8 text-[#b7c8d8]">
-          1회는 2026년 9월 30일 미래관 611호에서 열렸습니다. 이게모임 부원
-          26명과 동아리 밖 재학생 3명까지, 모두 29명이 모였습니다. 발표 다섯 건을
-          마친 뒤 팀 매칭, 포트폴리오 공유, 게임 토론으로 이어졌습니다.
+          2회는 2026년 11월 25일 수요일, 미래관 611호에서 열립니다. 18:00부터
+          20:00까지이고, 참여 제한은 없습니다.
         </p>
 
         <div className="mt-8 divide-y divide-cyan-300/15 border-y border-cyan-300/15">
@@ -177,20 +184,36 @@ function Overview({
             </svg>
           </button>
 
-          <div className="flex items-end justify-between gap-4 py-5">
+          <button
+            type="button"
+            onClick={onOpenVol2}
+            className="card-lift group flex w-full items-end justify-between gap-4 py-5 text-left hover:bg-cyan-300/[0.03]"
+          >
             <div>
-              <p className="font-tech text-[10px] tracking-[0.24em] text-white/30">
+              <p className="font-tech text-[10px] tracking-[0.24em] text-cyan-300">
                 02
               </p>
-              <p className="mt-2 text-[24px] font-medium leading-none tracking-tight text-white/45">
+              <p className="mt-2 text-[24px] font-medium leading-none tracking-tight text-white group-hover:text-cyan-100">
                 2회
               </p>
-              <p className="mt-2 text-sm text-white/30">다음 일정이 정해지면 올라갑니다.</p>
+              <p className="mt-2 text-sm text-[#9fb3c6]">
+                2026. 11. 25. (수) 18:00–20:00 · 미래관 611호
+              </p>
             </div>
-            <p className="font-tech shrink-0 text-[10px] tracking-[0.2em] text-white/28">
-              COMING SOON
-            </p>
-          </div>
+            <svg
+              aria-hidden
+              viewBox="0 0 12 12"
+              className="mb-1 h-3 w-3 shrink-0 text-cyan-200/75 transition group-hover:text-cyan-100"
+            >
+              <path
+                d="M3.2 8.8 8.8 3.2M4.6 3.2H8.8V7.4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.35"
+                strokeLinecap="square"
+              />
+            </svg>
+          </button>
         </div>
       </div>
     </div>
@@ -199,7 +222,15 @@ function Overview({
 
 function VolumeOne({ titleId }: { titleId: string }) {
   return (
-    <div className="p-5 md:p-8">
+    <div className="grid items-start gap-8 p-5 md:grid-cols-[minmax(0,280px)_minmax(0,1fr)] md:gap-10 md:p-8">
+      <figure className="border border-cyan-300/15 bg-[#070b12]">
+        <img
+          src="/meetup-poster.png?v=2"
+          alt="1회 이게모임 MEETUP 포스터"
+          className="block h-auto w-full"
+        />
+      </figure>
+      <div>
       <p className="font-tech text-[10px] tracking-[0.28em] text-cyan-300">
         VOL.01
       </p>
@@ -214,6 +245,9 @@ function VolumeOne({ titleId }: { titleId: string }) {
       </p>
       <div className="mt-5 max-w-2xl space-y-2 text-[15px] leading-6 text-[#b7c8d8]">
         <p>이게모임이 주관한 첫번째 밋업으로 성황리에 마무리되었습니다.</p>
+        <p>
+          부원 26명과 동아리 밖 재학생 3명까지, 모두 29명이 모였습니다.
+        </p>
         <p>사전 접수와 현장 접수 포함 5건의 발표 및 시연이 있었습니다.</p>
         <p>
           부원분들이 자유롭게 팀을 구하거나, 작업물들을 나눠보고 경험을 공유하는
@@ -253,6 +287,59 @@ function VolumeOne({ titleId }: { titleId: string }) {
           </li>
         ))}
       </ul>
+      </div>
+    </div>
+  )
+}
+
+function VolumeTwo({ titleId }: { titleId: string }) {
+  return (
+    <div className="grid items-start gap-8 p-5 md:grid-cols-[minmax(0,280px)_minmax(0,1fr)] md:gap-10 md:p-8">
+      <figure className="border border-cyan-300/15 bg-[#070b12]">
+        <img
+          src="/meetup-poster-vol2.jpg"
+          alt="제2회 이게모임 MEETUP 포스터"
+          className="block h-auto w-full"
+        />
+      </figure>
+
+      <div>
+        <p className="font-tech text-[10px] tracking-[0.28em] text-cyan-300">
+          VOL.02
+        </p>
+        <h3
+          id={titleId}
+          className="mt-3 text-[34px] font-medium leading-none tracking-tight text-white md:text-[42px]"
+        >
+          2회 MEETUP
+        </h3>
+        <p className="mt-3 font-tech text-[11px] tracking-[0.16em] text-cyan-100/70">
+          2026. 11. 25. (수) 18:00–20:00 · 국민대학교 미래관 611호
+        </p>
+        <div className="mt-5 max-w-xl space-y-2 text-[15px] leading-7 text-[#b7c8d8]">
+          <p>이게모임 두 번째 밋업에 여러분을 초대합니다.</p>
+          <p>
+            게임 개발에 관심 있으면 누구나 올 수 있고, 참여 제한은 없습니다.
+          </p>
+        </div>
+
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+          <li className="border border-cyan-300/15 bg-[#070b12] px-4 py-4">
+            <p className="font-tech text-[10px] tracking-[0.22em] text-cyan-300">
+              VENUE
+            </p>
+            <p className="mt-2 text-[17px] text-white">미래관 611호</p>
+            <p className="mt-1 text-sm text-[#9fb3c6]">국민대학교</p>
+          </li>
+          <li className="border border-cyan-300/15 bg-[#070b12] px-4 py-4">
+            <p className="font-tech text-[10px] tracking-[0.22em] text-cyan-300">
+              WHO
+            </p>
+            <p className="mt-2 text-[17px] text-white">누구나</p>
+            <p className="mt-1 text-sm text-[#9fb3c6]">제한 없이 참여 가능</p>
+          </li>
+        </ul>
+      </div>
     </div>
   )
 }
