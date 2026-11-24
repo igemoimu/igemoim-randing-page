@@ -80,8 +80,7 @@ export function ActivitySection({ onOpenConference }: ActivitySectionProps) {
               id="activity-h"
               className="font-display mt-3 text-[clamp(30px,4vw,52px)] font-semibold leading-[1.08] tracking-[-0.03em] text-white"
             >
-              매주 만들고,
-              <br className="hidden sm:inline" /> 매달 무대에 올립니다.
+              행사
             </h2>
           </div>
           <p className="max-w-md text-[15px] leading-7 text-[#8b95a7]">
@@ -108,7 +107,7 @@ export function ActivitySection({ onOpenConference }: ActivitySectionProps) {
                           {item.title}
                         </span>
                       </div>
-                      <span className="inline-flex items-center gap-2 rounded-full border border-[#38d6f5]/35 bg-[#38d6f5]/10 px-3.5 py-1.5 font-mono-tech text-[11px] text-[#7ce7fb] transition-all group-hover:border-[#38d6f5] group-hover:bg-[#38d6f5] group-hover:text-[#06070a]">
+                      <span className="inline-flex items-center gap-2 border-b border-[#38d6f5]/45 pb-1 font-mono-tech text-[11px] tracking-[0.06em] text-[#38d6f5] transition-colors group-hover:border-white group-hover:text-white">
                         {item.when}
                         <span
                           aria-hidden="true"

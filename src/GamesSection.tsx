@@ -95,7 +95,7 @@ export function GamesSection() {
               id="games-h"
               className="font-display mt-3 text-[clamp(30px,4vw,52px)] font-semibold leading-[1.08] tracking-[-0.03em] text-white"
             >
-              직접 플레이할 수 있는 결과물.
+              프로젝트
             </h2>
           </div>
           <p className="max-w-md text-[15px] leading-7 text-[#8b95a7]">
@@ -123,8 +123,8 @@ export function GamesSection() {
                 className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0c0e14] via-transparent to-[#06070a]/45"
                 aria-hidden="true"
               />
-              <div className="absolute left-4 top-4">
-                <span className="rounded-full border border-white/[0.14] bg-[#06070a]/70 px-2.5 py-1 font-mono-tech text-[10px] text-[#38d6f5] backdrop-blur-sm">
+              <div className="absolute left-3.5 top-3.5">
+                <span className="rounded-[4px] bg-[#06070a]/80 px-2 py-0.5 font-mono-tech text-[10px] tracking-[0.14em] text-[#38d6f5] backdrop-blur-sm">
                   01
                 </span>
               </div>
@@ -133,10 +133,14 @@ export function GamesSection() {
             <div className="flex flex-1 flex-col justify-between p-6">
               <div>
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <p className="font-mono-tech text-[10px] tracking-[0.08em] text-[#8b95a7]">
+                  <p className="font-mono-tech text-[10px] tracking-[0.06em] text-[#8b95a7]">
                     {TRANSCEND_LIGHTS.meta}
                   </p>
-                  <span className="inline-flex items-center rounded-full border border-[#f5c451]/40 bg-[#f5c451]/10 px-2.5 py-0.5 font-mono-tech text-[10px] text-[#f9d97c]">
+                  <span className="inline-flex items-center gap-1.5 text-[12px] font-semibold tracking-[-0.01em] text-[#f3ca63]">
+                    <span
+                      className="h-1.5 w-1.5 rotate-45 bg-[#f3ca63]"
+                      aria-hidden="true"
+                    />
                     AI 해커톤 대상
                   </span>
                 </div>
@@ -184,9 +188,9 @@ export function GamesSection() {
                     <span className="font-mono-tech text-[11px] text-[#38d6f5]">
                       BUILD {item.code}
                     </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.12] bg-[#06070a]/60 px-2.5 py-1 font-mono-tech text-[10px] text-white/75 backdrop-blur-sm">
+                    <span className="inline-flex items-center gap-2 font-mono-tech text-[10px] tracking-[0.08em] text-white/65">
                       <span
-                        className="h-1.5 w-1.5 rounded-full bg-[#38d6f5]"
+                        className="h-1.5 w-1.5 bg-[#38d6f5]"
                         aria-hidden="true"
                       />
                       {item.stage}
@@ -281,9 +285,9 @@ function TranscendLightsModal({ onClose }: { onClose: () => void }) {
 
           <div className="mt-7 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div>
-              <span className="inline-flex items-center rounded-full border border-[#f5c451]/40 bg-[#f5c451]/10 px-3 py-1 font-mono-tech text-[11px] text-[#f9d97c]">
+              <p className="inline-flex items-center gap-2 border-l-2 border-[#f3ca63] pl-3 text-[13px] font-semibold tracking-[-0.01em] text-[#f3ca63]">
                 {TRANSCEND_LIGHTS.award}
-              </span>
+              </p>
               <h3
                 id={titleId}
                 className="font-display mt-3 text-[32px] font-bold leading-tight tracking-[-0.03em] text-white md:text-[42px]"

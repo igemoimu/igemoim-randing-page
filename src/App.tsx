@@ -205,14 +205,13 @@ function App() {
                 <button
                   type="button"
                   onClick={() => setConferenceView('vol2')}
-                  className="group mb-5 inline-flex items-center gap-2.5 rounded-full border border-[#38d6f5]/30 bg-[#0c111d]/90 px-3.5 py-1.5 backdrop-blur-md transition-colors hover:border-[#38d6f5]"
+                  className="group mb-5 inline-flex items-center gap-2.5 border-l-2 border-[#38d6f5] bg-white/[0.04] px-3.5 py-1.5 backdrop-blur-md transition-colors hover:bg-white/[0.08]"
                 >
-                  <span
-                    className="h-2 w-2 rounded-full bg-[#38d6f5]"
-                    aria-hidden="true"
-                  />
-                  <span className="font-mono-tech text-[11px] text-white/90">
-                    VOL.02 MEETUP · 11.25 미래관 611호
+                  <span className="font-mono-tech text-[11px] text-[#38d6f5]">
+                    VOL.02 MEETUP
+                  </span>
+                  <span className="text-[12px] text-white/85">
+                    11.25 미래관 611호
                   </span>
                   <span
                     aria-hidden="true"
@@ -271,9 +270,9 @@ function App() {
               id="about-h"
               className="font-display mt-4 max-w-4xl text-[clamp(28px,4.2vw,54px)] font-semibold leading-[1.15] tracking-[-0.03em] text-white"
             >
-              혼자 뚝딱하기보다,{' '}
+              같이 만들고 끝까지 완성합니다.{' '}
               <span className="text-[#8b95a7]">
-                같이 만들고 진짜로 플레이할 수 있는 걸 남기려고 합니다.
+                아이디어만 쌓아두지 않고, 직접 해볼 수 있는 게임을 남깁니다.
               </span>
             </h2>
 
