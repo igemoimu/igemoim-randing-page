@@ -210,7 +210,7 @@ function App() {
                   className="group mb-5 inline-flex items-center gap-2.5 border-l-2 border-[#38d6f5] bg-white/[0.04] px-3.5 py-1.5 backdrop-blur-md transition-colors hover:bg-white/[0.08]"
                 >
                   <span className="font-mono-tech text-[11px] text-[#38d6f5]">
-                    VOL.02 MEETUP
+                    VOL.02 ARCHIVE
                   </span>
                   <span className="text-[12px] text-white/85">
                     11.25 미래관 611호

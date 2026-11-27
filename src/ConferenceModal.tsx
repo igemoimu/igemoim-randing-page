@@ -169,8 +169,8 @@ function Overview({
             나누는 자리입니다. 게임 개발에 관심 있으면 누구나 올 수 있어요.
           </p>
           <p>
-            2회는 2026년 11월 25일 수요일, 국민대학교 미래관 611호에서 열립니다.
-            18:00부터 20:00까지이며 참여 제한은 없습니다.
+            2회는 2026년 11월 25일 수요일, 국민대학교 미래관 611호에서
+            진행되었습니다. 발표 4건과 네트워킹으로 마무리되었어요.
           </p>
         </div>
 
@@ -182,7 +182,7 @@ function Overview({
           >
             <div>
               <p className="font-mono-tech text-[11px] text-[#38d6f5]">
-                VOL.02 · UPCOMING
+                VOL.02 · ARCHIVE
               </p>
               <p className="font-display mt-1.5 text-[22px] font-semibold text-white transition-colors group-hover:text-[#38d6f5]">
                 2회 MEETUP

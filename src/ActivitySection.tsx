@@ -33,10 +33,10 @@ const activities = [
 
 const editions = {
   vol2: {
-    tag: 'VOL.02 · UPCOMING',
+    tag: 'VOL.02 · ARCHIVE',
     label: '제2회 밋업',
     date: '2026. 11. 25. (수) 18:00–20:00',
-    place: '국민대학교 미래관 611호 · 누구나 참여 가능',
+    place: '미래관 611호 · 발표 4건 완료',
     poster: '/meetup-poster-vol2.jpg',
     width: 1080,
     height: 1527,
