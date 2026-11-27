@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { meetupNetworking, meetupTalks } from './conference'
+import { meetupTalks, meetupVol2Talks } from './conference'
 
 export type ConferenceView = 'overview' | 'vol1' | 'vol2'
 
@@ -228,6 +228,59 @@ function Overview({
   )
 }
 
+type MeetupTalk = {
+  speaker: string
+  title: string
+  cancelled?: boolean
+}
+
+function TalkList({ talks }: { talks: readonly MeetupTalk[] }) {
+  return (
+    <>
+      <p className="font-mono-tech mt-8 text-[11px] tracking-[0.18em] text-[#38d6f5]">
+        TALKS
+      </p>
+      <ol className="mt-3 divide-y divide-white/[0.08] border-y border-white/[0.08]">
+        {talks.map((talk, index) => (
+          <li
+            key={talk.title}
+            className="grid grid-cols-[28px_minmax(0,1fr)] gap-x-3 gap-y-1 py-4"
+          >
+            <span
+              className={`font-mono-tech text-[11px] ${talk.cancelled ? 'text-white/35' : 'text-[#38d6f5]'}`}
+            >
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div className="min-w-0">
+              <p
+                className={`text-[15px] leading-6 ${talk.cancelled ? 'text-white/40 line-through decoration-white/35' : 'text-white'}`}
+              >
+                {talk.title}
+              </p>
+              <p className="mt-1 flex flex-wrap items-baseline gap-x-2 text-[13px] leading-5">
+                {talk.cancelled ? (
+                  <span className="font-mono-tech text-[10px] tracking-[0.14em] text-[#8b95a7]">
+                    취소
+                  </span>
+                ) : null}
+                <span
+                  className={
+                    talk.cancelled
+                      ? 'text-white/35 line-through decoration-white/25'
+                      : 'text-[#8b95a7]'
+                  }
+                >
+                  {talk.speaker}
+                </span>
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </>
+  )
+}
+
 function VolumeOne({ titleId }: { titleId: string }) {
   return (
     <div className="grid items-start gap-8 p-5 md:grid-cols-[minmax(0,280px)_minmax(0,1fr)] md:gap-10 md:p-8">
@@ -254,48 +307,35 @@ function VolumeOne({ titleId }: { titleId: string }) {
         <p className="mt-2 font-mono-tech text-[11px] text-[#8b95a7]">
           2026. 9. 30. (수) 18:00–20:00 · 국민대학교 미래관 611호
         </p>
-        <div className="mt-5 space-y-2 text-[15px] leading-7 text-[#9aa5b8]">
+        <div className="mt-5 space-y-2.5 text-[15px] leading-7 text-[#9aa5b8]">
           <p>이게모임이 주관한 첫 번째 MEETUP으로 성황리에 마무리되었습니다.</p>
-          <p>부원 26명과 동아리 밖 재학생 3명까지, 모두 29명이 모였습니다.</p>
-          <p>사전 접수와 현장 접수 포함 5건의 발표 및 시연이 이어졌습니다.</p>
           <p>
-            자유롭게 팀을 구하고 작업물을 나눠보며 경험을 공유하는 자리로
-            마무리했습니다.
+            발표와 시연 5건 뒤, 팀 매칭과 동향 분석, 포트폴리오 공유, 게임
+            토론으로 경험을 나눴습니다.
           </p>
         </div>
 
-        <p className="font-mono-tech mt-8 text-[11px] tracking-[0.18em] text-[#38d6f5]">
-          TALKS
-        </p>
-        <ol className="mt-3 divide-y divide-white/[0.08] border-y border-white/[0.08]">
-          {meetupTalks.map((talk, index) => (
-            <li
-              key={talk.speaker}
-              className="grid grid-cols-[28px_minmax(0,1fr)] gap-x-3 gap-y-1 py-4 sm:grid-cols-[32px_minmax(0,1fr)_auto] sm:items-baseline"
-            >
-              <span className="font-mono-tech text-[11px] text-[#38d6f5]">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <p className="text-[15px] leading-6 text-white">{talk.title}</p>
-              <p className="col-start-2 text-[13px] text-[#8b95a7] sm:col-start-3 sm:text-right">
-                {talk.speaker}
-              </p>
-            </li>
-          ))}
-        </ol>
+        <TalkList talks={meetupTalks} />
 
-        <p className="font-mono-tech mt-8 text-[11px] tracking-[0.18em] text-[#38d6f5]">
-          NETWORKING
-        </p>
-        <ul className="mt-3 grid gap-2.5 sm:grid-cols-2">
-          {meetupNetworking.map((item) => (
-            <li
-              key={item}
-              className="rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-[14px] text-white/85"
-            >
-              {item}
-            </li>
-          ))}
+        <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+          <li className="rounded-xl border border-white/[0.09] bg-white/[0.03] p-5">
+            <p className="font-mono-tech text-[10px] tracking-[0.18em] text-[#38d6f5]">
+              VENUE
+            </p>
+            <p className="mt-2 text-[18px] font-semibold text-white">
+              미래관 611호
+            </p>
+            <p className="mt-0.5 text-[14px] text-[#8b95a7]">국민대학교</p>
+          </li>
+          <li className="rounded-xl border border-white/[0.09] bg-white/[0.03] p-5">
+            <p className="font-mono-tech text-[10px] tracking-[0.18em] text-[#38d6f5]">
+              WHO
+            </p>
+            <p className="mt-2 text-[18px] font-semibold text-white">29명</p>
+            <p className="mt-0.5 text-[14px] text-[#8b95a7]">
+              부원 26명 · 외부 3명
+            </p>
+          </li>
         </ul>
       </div>
     </div>
@@ -329,11 +369,14 @@ function VolumeTwo({ titleId }: { titleId: string }) {
           2026. 11. 25. (수) 18:00–20:00 · 국민대학교 미래관 611호
         </p>
         <div className="mt-5 space-y-2.5 text-[15px] leading-7 text-[#9aa5b8]">
-          <p>이게모임 두 번째 MEETUP에 여러분을 초대합니다.</p>
+          <p>이게모임이 주관한 두 번째 MEETUP으로 마무리되었습니다.</p>
           <p>
-            게임 개발에 관심 있으면 누구나 올 수 있고, 참여 제한은 없습니다.
+            해커톤 경험, 바이럴 마케팅, 세컨드 브레인, 게임 스토리까지 발표
+            4건으로 경험을 나눴습니다.
           </p>
         </div>
+
+        <TalkList talks={meetupVol2Talks} />
 
         <ul className="mt-8 grid gap-3 sm:grid-cols-2">
           <li className="rounded-xl border border-white/[0.09] bg-white/[0.03] p-5">

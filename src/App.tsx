@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { ActivitySection } from './ActivitySection'
 import { ConferenceModal, type ConferenceView } from './ConferenceModal'
 import { GamesSection } from './GamesSection'
+import { ReviewModal } from './ReviewModal'
 
 const CONTACT_EMAIL = 'igemoimu@gmail.com'
 const CONTACT_MAILTO = `mailto:${CONTACT_EMAIL}`
@@ -51,17 +52,18 @@ function App() {
   const [conferenceView, setConferenceView] = useState<ConferenceView | null>(
     null,
   )
+  const [reviewOpen, setReviewOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [copied, setCopied] = useState(false)
 
   useEffect(() => {
-    if (!conferenceView && !menuOpen) return
+    if (!conferenceView && !reviewOpen && !menuOpen) return
     const prev = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     return () => {
       document.body.style.overflow = prev
     }
-  }, [conferenceView, menuOpen])
+  }, [conferenceView, reviewOpen, menuOpen])
 
   const copyEmail = async () => {
     try {
@@ -321,7 +323,10 @@ function App() {
           </div>
         </section>
 
-        <ActivitySection onOpenConference={setConferenceView} />
+        <ActivitySection
+          onOpenConference={setConferenceView}
+          onOpenReview={() => setReviewOpen(true)}
+        />
 
         <GamesSection />
 
@@ -468,6 +473,10 @@ function App() {
           initialView={conferenceView}
           onClose={() => setConferenceView(null)}
         />
+      ) : null}
+
+      {reviewOpen ? (
+        <ReviewModal onClose={() => setReviewOpen(false)} />
       ) : null}
     </div>
   )

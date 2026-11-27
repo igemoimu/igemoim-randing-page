@@ -24,10 +24,10 @@ const activities = [
     id: 'activity-review',
     code: '03',
     title: 'REVIEW',
-    subtitle: '주간 빌드 공유 및 피드백',
-    desc: '매주 진행 중인 게임 빌드와 기획을 직접 플레이해 보며 완성도를 끌어올립니다.',
+    subtitle: '정기 모임 · 발표 · 빌드 피드백',
+    desc: '매주 수요일 모여 진행 중인 빌드와 기획을 공유하고, 게임 개발에 관한 발표와 피드백을 나눕니다.',
     when: 'EVERY WEDNESDAY',
-    open: false,
+    open: true,
   },
 ] as const
 
@@ -58,9 +58,13 @@ type EditionKey = keyof typeof editions
 
 type ActivitySectionProps = {
   onOpenConference: (view: ConferenceView) => void
+  onOpenReview: () => void
 }
 
-export function ActivitySection({ onOpenConference }: ActivitySectionProps) {
+export function ActivitySection({
+  onOpenConference,
+  onOpenReview,
+}: ActivitySectionProps) {
   const [selectedEdition, setSelectedEdition] = useState<EditionKey>('vol2')
   const active = editions[selectedEdition]
 
@@ -95,7 +99,11 @@ export function ActivitySection({ onOpenConference }: ActivitySectionProps) {
                 {item.open ? (
                   <button
                     type="button"
-                    onClick={() => onOpenConference('overview')}
+                    onClick={() =>
+                      item.id === 'activity-review'
+                        ? onOpenReview()
+                        : onOpenConference('overview')
+                    }
                     className="group flex w-full flex-col gap-4 py-8 text-left transition-colors duration-200 hover:bg-white/[0.025] md:px-4"
                   >
                     <div className="flex flex-wrap items-center justify-between gap-3">

@@ -21,9 +21,31 @@ export const meetupTalks = [
   },
 ] as const
 
-export const meetupNetworking = [
-  '팀 매칭',
-  '최근 게임 동향 분석',
-  '포트폴리오 공유',
-  '게임 토론',
+export const meetupVol2Talks = [
+  {
+    speaker: '팀~원 (강현준, 김한결, 배시현, 성도윤)',
+    title:
+      '해커톤에서 내가 우승할 수 있을리가 없잖아, 무리무리! (※무리가 아니었다?!)',
+    cancelled: false,
+  },
+  {
+    speaker: '외부 참여자',
+    title: '동적 OG이미지와 공유 시스템을 활용한 바이럴 마케팅',
+    cancelled: false,
+  },
+  {
+    speaker: '조현호',
+    title: '뇌를 닮은 세컨드 브레인 : 토큰 낭비 없는 RAG',
+    cancelled: false,
+  },
+  {
+    speaker: '유마루한',
+    title: '좋은 게임 스토리에 대해',
+    cancelled: false,
+  },
+  {
+    speaker: '이정현',
+    title: '잰슨황 사퇴기념 그래픽카드값 상승에 대비한 게임 최적화 기법 소개',
+    cancelled: true,
+  },
 ] as const
